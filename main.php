@@ -1,22 +1,24 @@
 <?php
 
-define("SILENT_MESSAGE", 4096);
 
 use Discord\Discord;
 use Discord\WebSockets\Intents;
+use gamba\Database;
 
 const TIME_ZONE = 'Europe/Stockholm';
+const SILENT_MESSAGE = 4096;
 
 require_once __DIR__.'/vendor/autoload.php';
 require_once __DIR__.'/extensions/autoloader.php';
 
-
 $commandNames = [
     "buyWishingStone",
-    "wish"
+    "wish",
+    "getWishingStones"
 ];
 
 $token = file_get_contents('token.txt');
+$database = new Database('mysql:host=localhost;dbname=gamba', 'root', '');
 
 $discord = new Discord([
     'token' => $token,
