@@ -9,7 +9,7 @@ class Inventory {
         $this->database = $database;
     }
 
-    public function getUserInventory(int $id): array {
+    public function getUserInventory(string $id): array {
         return $this->database->getUserInventory($id);
     }
 }

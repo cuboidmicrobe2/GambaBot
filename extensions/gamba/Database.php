@@ -14,7 +14,7 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
     }
 
-    protected function checkIfUserExists(int $id) : void {
+    protected function checkIfUserExists(string $id) : void {
         // $otherID = $this->mysql->query("SELECT ID FROM wishing_stones WHERE ID = $id")->fetch_assoc();
         // if (!$otherID) {
         //     $this->mysql->query("INSERT INTO wishing_stones(ID, AMOUNT) VALUES($id, 10)");
@@ -42,7 +42,7 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
     }
 
-    protected function getWishCount(int $id) : int {
+    protected function getWishCount(string $id) : int {
         // return $this->mysql->query("SELECT WISH_COUNT FROM pity WHERE ID = $id")->fetch_assoc()['WISH_COUNT'];
         try {
             $statement = $this->pdo->prepare("SELECT WISH_COUNT FROM pity WHERE ID = :id");
@@ -54,7 +54,7 @@ class Database {
         return $statement->fetchAll(PDO::FETCH_ASSOC)[0]['WISH_COUNT'];
     }
 
-    protected function getYellowPity(int $id) : int {
+    protected function getYellowPity(string $id) : int {
         // return $this->mysql->query("SELECT Y_PITY FROM pity WHERE ID = $id")->fetch_assoc()['Y_PITY'];
         try {
             $statement = $this->pdo->prepare("SELECT Y_PITY FROM pity WHERE ID = :id");
@@ -66,7 +66,7 @@ class Database {
         return $statement->fetchAll(PDO::FETCH_ASSOC)[0]['Y_PITY'];
     }
 
-    protected function getPurplePity(int $id) : int {
+    protected function getPurplePity(string $id) : int {
         // return $this->mysql->query("SELECT P_PITY FROM pity WHERE ID = $id")->fetch_assoc()['P_PITY'];
         try {
             $statement = $this->pdo->prepare("SELECT P_PITY FROM pity WHERE ID = :id");
@@ -78,7 +78,7 @@ class Database {
         return $statement->fetchAll(PDO::FETCH_ASSOC)[0]['P_PITY'];
     }
 
-    protected function getYellowIncrease(int $id) : int {
+    protected function getYellowIncrease(string $id) : int {
         // return $this->mysql->query("SELECT Y_INCREASE FROM pity WHERE ID = $id")->fetch_assoc()['Y_INCREASE'];
         try {
             $statement = $this->pdo->prepare("SELECT Y_INCREASE FROM pity WHERE ID = :id");
@@ -90,7 +90,7 @@ class Database {
         return $statement->fetchAll(PDO::FETCH_ASSOC)[0]['Y_INCREASE'];
     }
 
-    protected function incrementWishCount(int $id) : void {
+    protected function incrementWishCount(string $id) : void {
         // $this->mysql->query("UPDATE pity SET WISH_COUNT = WISH_COUNT + 1 WHERE ID = $id");
         try {
             $statement = $this->pdo->prepare("UPDATE pity SET WISH_COUNT = WISH_COUNT + 1 WHERE ID = :id");
@@ -100,7 +100,7 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
     }
 
-    protected function incrementYellowPity(int $id) : void {
+    protected function incrementYellowPity(string $id) : void {
         // $this->mysql->query("UPDATE pity SET Y_PITY = Y_PITY + 1 WHERE ID = $id");
         try {
             $statement = $this->pdo->prepare("UPDATE pity SET Y_PITY = Y_PITY + 1 WHERE ID = :id");
@@ -110,7 +110,7 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
     }
 
-    protected function incrementPurplePity(int $id) : void {
+    protected function incrementPurplePity(string $id) : void {
         // $this->mysql->query("UPDATE pity SET P_PITY = P_PITY + 1 WHERE ID = $id");
         try {
             $statement = $this->pdo->prepare("UPDATE pity SET P_PITY = P_PITY + 1 WHERE ID = :id");
@@ -120,7 +120,7 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
     }
 
-    protected function incrementYellowIncrease(int $id, float $amount) : void {
+    protected function incrementYellowIncrease(string $id, float $amount) : void {
         // $this->mysql->query("UPDATE pity SET Y_INCREASE = Y_INCREASE + $amount WHERE ID = $id");
         try {
             $statement = $this->pdo->prepare("UPDATE pity SET Y_INCREASE = Y_INCREASE + :amount WHERE ID = :id");
@@ -130,7 +130,7 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
     }
 
-    protected function resetYellowPity(int $id) : void {
+    protected function resetYellowPity(string $id) : void {
         // $this->mysql->query("UPDATE pity SET Y_PITY = 1 WHERE ID = $id");
         try {
             $statement = $this->pdo->prepare("UPDATE pity SET Y_PITY = 1 WHERE ID = :id");
@@ -140,7 +140,7 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
     }
 
-    protected function resetPurplePity(int $id) : void {
+    protected function resetPurplePity(string $id) : void {
         // $this->mysql->query("UPDATE pity SET P_PITY = 1 WHERE ID = $id");
         try {
             $statement = $this->pdo->prepare("UPDATE pity SET P_PITY = 1 WHERE ID = :id");
@@ -150,7 +150,7 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
     }
 
-    protected function resetYellowIncrease(int $id) : void {
+    protected function resetYellowIncrease(string $id) : void {
         // $this->mysql->query("UPDATE pity SET Y_INCREASE = 0 WHERE ID = $id");
         try {
             $statement = $this->pdo->prepare("UPDATE pity SET Y_INCREASE = 0 WHERE ID = :id");
@@ -161,7 +161,7 @@ class Database {
     }
 
 
-    protected function getNrOfWishingStones(int $id) : int {
+    protected function getNrOfWishingStones(string $id) : int {
         // return $this->mysql->query("SELECT AMOUNT FROM wishing_stones WHERE ID = $id")->fetch_assoc()['AMOUNT'];
         try {
             $statement = $this->pdo->prepare("SELECT AMOUNT FROM wishing_stones WHERE ID = :id");
@@ -173,7 +173,7 @@ class Database {
         return $statement->fetchAll(PDO::FETCH_ASSOC)[0]['AMOUNT'];
     }
 
-    protected function getNrOfCoins(int $id) : int {
+    protected function getNrOfCoins(string $id) : int {
         // return $this->mysql->query("SELECT AMOUNT FROM coins WHERE ID = $id")->fetch_assoc()['AMOUNT'];
         try {
             $statement = $this->pdo->prepare("SELECT AMOUNT FROM coins WHERE ID = :id");
@@ -185,7 +185,7 @@ class Database {
         return $statement->fetchAll(PDO::FETCH_ASSOC)[0]['AMOUNT'];
     }
 
-    protected function addWishingStones(int $id, int $amount) : void {
+    protected function addWishingStones(string $id, int $amount) : void {
         // $this->mysql->query("UPDATE wishing_stones SET AMOUNT = AMOUNT + $amount WHERE ID = $id");
         try {
             $statement = $this->pdo->prepare("UPDATE wishing_stones SET AMOUNT = AMOUNT + :amount WHERE ID = :id");
@@ -195,7 +195,7 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
     }
 
-    protected function subtractWishingStones(int $id) : void {
+    protected function subtractWishingStones(string $id) : void {
         // $this->mysql->query("UPDATE wishing_stones SET AMOUNT = AMOUNT - 1 WHERE ID = $id");
         try {
             $statement = $this->pdo->prepare("UPDATE wishing_stones SET AMOUNT = AMOUNT - 1 WHERE ID = :id");
@@ -205,7 +205,7 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
     }
 
-    protected function addCoins(int $id, int $amount) : void {
+    protected function addCoins(string $id, int $amount) : void {
         // $this->mysql->query("UPDATE coins SET AMOUNT = AMOUNT + $amount WHERE ID = $id");
         try {
             $statement = $this->pdo->prepare("UPDATE coins SET AMOUNT = AMOUNT + :amount WHERE ID = :id");
@@ -215,7 +215,7 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
     }
 
-    protected function subtractCoins(int $id, int $amount) : bool {
+    protected function subtractCoins(string $id, int $amount) : bool {
         // $currentCurrency = $this->mysql->query("SELECT AMOUNT FROM coins WHERE ID = $id")->fetch_assoc()['AMOUNT'];
         // if ($currentCurrency < $amount) {
         //     return false;
@@ -241,7 +241,7 @@ class Database {
         return true;
     }
 
-    public function getUserInventory(int $id): array {
+    public function getUserInventory(string $id): array {
         // return $this->mysql->query("SELECT * FROM inventory WHERE ID = $id")->fetch_all();
         try {
             $statement = $this->pdo->prepare("SELECT * FROM inventory WHERE ID = :id");
@@ -251,6 +251,17 @@ class Database {
         catch (PDOException $e) { echo $e->getMessage(); }
 
         return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
+    }
+
+    public function getNrOfStones(string $id): int {
+        try {
+            $statement = $this->pdo->prepare("SELECT AMOUNT FROM wishing_stones WHERE ID = :id");
+            $statement->execute(["id" => $id]);
+        }
+
+        catch (PDOException $e) { echo $e->getMessage(); }
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC)[0]['AMOUNT'];
     }
 }
 
